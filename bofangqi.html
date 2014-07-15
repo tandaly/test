@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    var playlist = [];
+    $(function(){
+        $.getJSON("http://douban.fm/j/mine/playlist?channel=0", function(data){
+ console.log("xx");
+});
+        /*$.ajax({
+          url: 'http://douban.fm/j/mine/playlist',
+          type: 'post',
+          dataType: 'jsonp',
+          data: {channel: '0'},
+          complete: function(xhr, textStatus) {
+            //called when complete
+          },
+          success: function(data, textStatus, xhr) {
+            //called when successful
+            console.log(data);
+          },
+          error: function(xhr, textStatus, errorThrown) {
+            //called when there is an error
+            console.log("err");
+          }
+        });
+       */
+       
+    })
+
+    function play(){
+        //document.getElementById("music").src= document.getElementById("musicurl").value;
+    }
+    </script>
+</head>
+<body>
+    <div id="view"></div>
+    <input id="musicurl" type="text" value="http://mr3.douban.com/201407152153/a9383bacec9d2963551e227546289aca/view/song/small/p2098697.mp3"/><input type="button" onclick="play();"  value="播放"/>
+    <audio id="music" src="http://myst729.github.io/introducing-shadow-dom/resources/chandeen-jutland.mp3" controls=""></audio>
+
+
+    <br/>
+
+    <video height="400" width="500" poster="http://myst729.github.io/introducing-shadow-dom/resources/sintel.png" src="http://myst729.github.io/introducing-shadow-dom/resources/sintel.mp4" controls=""></video>
+
+</body>
+</html>
