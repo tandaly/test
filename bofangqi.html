@@ -14,9 +14,13 @@
 
     var playlist = [];
     $(function(){
-        $.get("http://douban.fm/j/mine/playlist?channel=0", function(data){
+
+     $("#view").load("http://douban.fm/j/mine/playlist?channel=0");
+
+      /*  $.get("http://douban.fm/j/mine/playlist?channel=0", function(data){
  console.log("xx");
 });
+*/
         /*$.ajax({
           url: 'http://douban.fm/j/mine/playlist',
           type: 'post',
@@ -39,7 +43,7 @@
     })
 
     function play(){
-      console.log(document.getElementById('test').contentWindow.document.body.innerText);
+      //console.log(document.getElementById('test').contentWindow.document.body.innerText);
         document.getElementById("music").src= document.getElementById("musicurl").value;
     }
     </script>
