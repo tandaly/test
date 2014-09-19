@@ -21,6 +21,7 @@
 </head>
 <body>
   
+ 
   <div class="container">
     <div class="row">
       <ol class="breadcrumb">
@@ -29,26 +30,79 @@
     </ol>
     </div>
     <div class="row">
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">前缀</span>
-        <input type="text" class="form-control" placeholder="请输入前缀">
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="options" id="option1" autocomplete="off" checked value="1"> 默认
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2" autocomplete="off" value="2"> 多行转换成一行
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" autocomplete="off" value="3">替换双引号为单引号
+        </label>
       </div>
       <br/>
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">后缀</span>
-        <input type="text" class="form-control" placeholder="请输入后缀">
+      <br/>
+      <div id="view_option1">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">前缀</span>
+          <input type="text" id="prefix" class="form-control" placeholder="请输入前缀">
+        </div>
+        <br/>
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">后缀</span>
+          <input type="text" id="suffix" class="form-control" placeholder="请输入后缀">
+        </div>
+        <br/>
       </div>
+      <div id="view_option2">
+      </div>
+      <div id="view_option3">
+      </div>
+      <textarea id="source" class="form-control" rows="15" placeholder="请输入源字符串"></textarea>
+      <br/>
+      <div class="col-md-12">
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" onclick="switchSqlString()">转换</button>
+        </div>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <textarea id="result" class="form-control" rows="15" placeholder="这里显示处理后的结果"></textarea>
+      <br/>
     </div>
   </div>
-
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 - <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
  <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+ 
+ 
+ <script src="SqlString.js"></script>
+
  <script>
-    $(function(){
+    $(function(){ 
+      $("input[name=options]").each(function(){
+         $(this).parent().on('click', function () {
+            var id=$(this).find("input").attr("id"); 
+            $("div[id^='view_option']").hide();
+            $("div#view_" + id).show();
+        });
+      });
     });
+
+    function switchSqlString(){
+     //alert($("input[name=options]:checked").val());
+     
+     var sqlString = new SqlString();
+     sqlString.lineStartWith = $("#prefix").val();
+     sqlString.lineEndWith = $("#suffix").val();
+     sqlString.value = $("#source").val();
+     $("#result").val(sqlString.wrapString());
+    }
  </script>
   </body>
 </html>
+
