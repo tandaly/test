@@ -4,49 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <title>Document</title>
-    <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-     // 豆瓣API
-    //频道列表
-    //http://www.douban.com/j/app/radio/channels
-    //歌曲列表
-    //http://douban.fm/j/mine/playlist?channel=0
 
-    var playlist = [];
-    $(function(){
-
-     $("#view").load("http://douban.fm/j/mine/playlist?channel=0");
-
-      /*  $.get("http://douban.fm/j/mine/playlist?channel=0", function(data){
- console.log("xx");
-});
-*/
-        /*$.ajax({
-          url: 'http://douban.fm/j/mine/playlist',
-          type: 'post',
-          dataType: 'jsonp',
-          data: {channel: '0'},
-          complete: function(xhr, textStatus) {
-            //called when complete
-          },
-          success: function(data, textStatus, xhr) {
-            //called when successful
-            console.log(data);
-          },
-          error: function(xhr, textStatus, errorThrown) {
-            //called when there is an error
-            console.log("err");
-          }
-        });
-       */
-       
-    })
-
-    function play(){
-      //console.log(document.getElementById('test').contentWindow.document.body.innerText);
-        document.getElementById("music").src= document.getElementById("musicurl").value;
-    }
-    </script>
 </head>
 <body>
     <div id="view"></div>
@@ -59,5 +17,51 @@
     <video height="400" width="500" poster="http://myst729.github.io/introducing-shadow-dom/resources/sintel.png" src="http://myst729.github.io/introducing-shadow-dom/resources/sintel.mp4" controls=""></video>
   <iframe id="test" src="http://douban.fm/j/mine/playlist?channel=0"></iframe>
   <iframe src="http://myst729.github.io/html5-jukebox/" height="600" width="400"></iframe>
+
+
+    <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/jsonp.js"></script>
+    <script type="text/javascript">
+        // 豆瓣API
+        //频道列表
+        //http://www.douban.com/j/app/radio/channels
+        //歌曲列表
+        //http://douban.fm/j/mine/playlist?channel=0
+
+        var playlist = [];
+        $(function(){
+
+           // $("#view").load("http://douban.fm/j/mine/playlist?channel=0");
+
+            /*  $.get("http://douban.fm/j/mine/playlist?channel=0", function(data){
+             console.log("xx");
+             });
+             */
+            /*$.ajax({
+             url: 'http://douban.fm/j/mine/playlist',
+             type: 'post',
+             dataType: 'jsonp',
+             data: {channel: '0'},
+             complete: function(xhr, textStatus) {
+             //called when complete
+             },
+             success: function(data, textStatus, xhr) {
+             //called when successful
+             console.log(data);
+             },
+             error: function(xhr, textStatus, errorThrown) {
+             //called when there is an error
+             console.log("err");
+             }
+             });
+             */
+
+        })
+
+        function play(){
+            //console.log(document.getElementById('test').contentWindow.document.body.innerText);
+            document.getElementById("music").src= document.getElementById("musicurl").value;
+        }
+    </script>
 </body>
 </html>

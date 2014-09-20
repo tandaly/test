@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>倒计时</title>
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <!--  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    .bs-glyphicons-list{
+        cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  
+ 
+  <div class="container">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li><a href="index.html">主页</a></li>
+        <li class="active">datediff</li>
+    </ol>
+    </div>
+    <div class="row">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>介绍</strong>：该功能采用了开源js插件datediff.js来实现计时操作
+            <br/>
+            <strong>案例说明</strong>：本人生于1990年3月8日，卒于2090年3月8日，享年100岁 ^_^
+      </div>
+    </div>
+    <div class="row">
+        <div class="text-center">
+            <div style="color:red">消耗的生命时间</div>
+            <div id="used" class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    0%
+                </div>
+            </div>
+            <h1 id="view" style="color:red;">正在加载...</h1>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div style="color:green">剩余的生命时间</div>
+            <div id="unused" class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    0%
+                </div>
+            </div>
+            <h1 id="view2" style="color:green;">正在加载...</h1>
+        </div>
+    </div>
+  </div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+- <!--<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+  <script src="js/jquery.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!-- <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+  <script src="js/datediff.js"></script>
+
+ <script>
+    $(function(){
+        setInterval(function() {
+            var from = new Date(1990, 3, 8, 0, 0, 0),
+                    to = new Date(),
+                    to2 = new Date(2090, 3, 8, 0, 0),
+                    diff,diff2;
+
+            diff = datediff(from, to);
+            diff2 = datediff(to, to2);
+
+            $("#view").html(diff.years + '年' + diff.months + '月' + diff.days + '日'
+                    + diff.hours + '时' + diff.minutes + '分' + diff.seconds + '秒');
+            $("#used div").attr("style", 'width:'+ diff.years  + '%').html(diff.years + '%');
+
+            $("#view2").html(diff2.years + '年' + diff2.months + '月' + diff2.days + '日'
+                    + diff2.hours + '时' + diff2.minutes + '分' + diff2.seconds + '秒');
+            $("#unused div").attr("style", 'width:'+ (diff2.years+1) + '%').html((diff2.years+1) + '%');
+        }, 1000);
+    });
+
+ </script>
+  </body>
+</html>
+

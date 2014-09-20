@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <input type="button" id="dy" value="动态加载js" onclick="dy()"/>
+
+    <script src="js/script.js"></script>
+    <script>
+        window.onload = function(){
+        }
+
+        function dy(){
+            $script.path("js/");
+            $script(['jquery', 'SqlString'], function () {
+                console.log($("#dy"));
+            });
+
+        }
+    </script>
+</body>
+</html>
